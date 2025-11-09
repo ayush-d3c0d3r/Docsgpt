@@ -3,7 +3,10 @@ import tempfile
 import streamlit as st
 from typing import List
 
-from langchain_community.document_loaders import PyPDFLoader, TextLoader
+try:
+    from langchain_community.document_loaders import PyPDFLoader, TextLoader
+except ModuleNotFoundError:
+    from langchain.document_loaders import PyPDFLoader, TextLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.docstore.document import Document
 from langchain_community.vectorstores import FAISS
